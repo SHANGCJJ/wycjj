@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		// 一、对象
+		// var obj = {
+			// 	name:"小明",
+			// 	age:18,
+			// 	sex:"男",
+			// 	hobby:["web","R","python","C","java"]
+			// }
+
+			// alert(obj.name);
+			// alert(obj.age)
+			// alert(obj.sex);
+			// alert(obj.hobby[0]);
+
+			// alert(obj[2]);
+
+			// 二、数组
+			// var o = ["小明",18,"男",["web","R","python","C","java"]];
+			// alert(o[2]);
+
+
+
+			//三、DOM元素也是对象
+			// var a = document.getElementById("box");
+			// alert(typeof a);  //object
+			// a.name = "小明";
+			// a.age = 18;
+			// a.hobby = ["web","R","python","C","java"];
+			// alert(a.age);   //18
+
+
+
+			//四、数组也是对象
+			// var arr = [42,64,245,74,24];
+			// alert(typeof arr); //object
+			// arr.name = "小明";
+			// arr.age = 18;
+			// arr.sex = "男";
+			// arr.hobby = ["web","R","python","C","java"];
+			// alert(arr.sex);
+			// alert(arr.hobby[2]);
+
+
+
+			//五、函数也是对象
+			// function fun(a,b){
+				// 	alert(a+b);
+				// }
+				// alert(typeof fun);
+				// fun.xingming = "小明";
+				// fun.age = 18;
+				// fun.hobby = ["web","R","python","C","java"];
+				// alert(fun.xingming);
+				// alert(fun.age);
+				// alert(fun.hobby[3]);
+				// alert(fun.name);
+				// alert(fun.length);
+				// fun(45,45);
+
+
+
+
+				// var b = 100;
+				// b.name = "小明";
+				// alert(b.name);    //undefined
+
+
+				// var c = new Number(12);
+				// alert(c);     //12
+				// c.name = "小明";
+				// alert(c.name);
+
+
+				// function person(){
+					// 	this.name = "小明";
+					// 	this.age = 18;
+					// 	this.sex = "男";
+					// 	// alert(this.name);
+					// }
+
+					// // new person();
+					// var obj = new person();
+					// console.log(obj);
+
+
+
+					//二、构造函数
+					// 调用函数的方式：
+
+					// 圆括号直接调用                      next()
+					// 对象打点调用                        obj.name
+					// 定时器调用/时间处理函数调用          setInterval(function (){next();},1000);
+					// 数组枚举调用                        arr[1]
+
+					// 他们的体现是函数的上下文不同，他们的this指向不同。我们来看一下this.
+
+
+
+					// function person(){                   
+						// 	this.name = "小明";    	      
+						// 	this.age = 18;         	      
+						// 	this.sex = "男";        	      
+						// 	// alert(this.name);    	      
+						// }                       		      
+						// // new person();	     				
+						// var obj = new person();					
+						// console.log(obj);		
+
+
+
+						// New运算符，调用一个函数：
+						// 	当用new调用时，函数内部创建一个局部变量，是一个空的对象
+						// 	函数将自己的上下文设置为{}，即This全部指向这个空对象
+						// 	执行所有语句
+						// 	所有语句执行后，函数将return这个对象，返回自己的所有
+						// 所以遇见new操作符，想起4步骤。
+
+
+						// function Person(name,age,sex){
+							// 	this.name = name;
+							// 	this.age = age;
+							// 	this.sex = sex;
+							// }
+
+							// var xiaoming = new Person("小明",18,"男");
+							// var zengge = new Person("增哥",18,"男");
+
+							// console.log(xiaoming);
+							// console.log(zengge);
+
+
+
+							// 不用new调用构造函数
+							// function Person(name,age,sex){	
+								// 	this.name = name;
+								// 	this.age = age;					
+								// 	this.sex = sex;					
+								// }										
+								// Person("小明",18,"男");				
+								// alert(age);
+
+
+
+
+
+
+								//小测试：下面这个函数是不是一个构造函数？
+								// function fun (){
+
+									// }
+
+
+
+									//小测试：下面这个函数是不是一个构造函数？
+									// function Person(name,age){
+										// 	this.name = name;
+										// 	this.age = age;
+										// }
+										// var obj = Person("小明",18);
+										// alert(obj);
+										// alert(obj == null);
+										// alert(obj.age);
+									</script>
+
+
+									<!-- this关键字 -->
+									<script>
+										// function person(){
+											// 	this.name="xl";
+											// 	alert(this);
+											// 	alert(this.name);
+											// }
+											// person();  //输出  window  xl
+
+
+
+											// var name="xl";
+											// function person(){
+												// 	alert(this.name);
+												// }
+												// person(); //输出 xl
+
+
+
+												// var name="XL";
+												// var person={
+													// 	name:"xl",
+													// 	showName:function(){
+														// 		alert(this.name);
+														// 	}
+														// }
+														// // person.showName();  //输出  xl
+
+														// var showNameA = person.showName;
+														// showNameA();    //输出  XL
+														// //showNameA(); ==== window.showNameA();
+
+
+
+														// var personA={
+															// 	name:"xl",
+															// 	showName:function(){
+																// 		alert(this.name);
+																// 	}
+																// }
+																// var personB={
+																	// 	name:"XL",
+																	// 	sayName:personA.showName
+																	// }
+
+																	// personB.sayName();  //输出 XL
+
+
+
+
+																	// function  Person(name){
+																		// 	this.name=name;
+																		// }
+																		// var personA=Person("xl");   
+																		// alert(personA.name); // 输出  undefined
+																		// alert(window.name);//输出  xl
+
+																		// var personB=new Person("xl");
+																		// alert(personB.name);// 输出 xl
+
+
+																		
+
+																	</script>
+
+																</body>
+															</script>
+															</html>
